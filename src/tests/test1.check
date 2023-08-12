@@ -1,11 +1,17 @@
-#test test1
+#test t1
   char str[] = "1+5*2+3";
   char origin[] = "152*+3+";
   calc(str);
   ck_assert_str_eq(str, origin);
 
-// #test test2
+// #test t2
 //   char str[] = "4*5+3-4/2*6";
 //   char origin[] = "45*3+42/6*-";
+//   calc(str);
+//   ck_assert_str_eq(str, origin);
+
+// #test t3
+//   char str[] = "cos(3)+sin(2)";
+//   char origin[] = "cos(3)+";
 //   calc(str);
 //   ck_assert_str_eq(str, origin);

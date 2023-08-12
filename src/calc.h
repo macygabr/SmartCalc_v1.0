@@ -4,7 +4,7 @@
 
 typedef struct _Node {
 	char value;
-   int mass;
+    int mass;
 	struct _Node *next;
 	struct _Node *prev;
 } Node;
@@ -20,10 +20,8 @@ typedef struct _DblLinkedList {
 int calc(char* content);
 int mass(char sign);
 DblLinkedList* createDblLinkedList() ;
-void deleteDblLinkedList(DblLinkedList **list);
-void pushFront(DblLinkedList *list, void *data);
-void* popFront(DblLinkedList *list);
-void pushBack(DblLinkedList *list, char value);
-char popBack(DblLinkedList *list);
-char convert(char* content, int* i);
+Node* pushBack(DblLinkedList *list, char value);
+Node* popBack(DblLinkedList *list);
+int convert(char* content, DblLinkedList* list);
+int operation(char content);
 #endif

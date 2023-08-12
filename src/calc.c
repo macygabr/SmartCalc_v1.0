@@ -3,26 +3,11 @@
 #include <stdlib.h>
 
 int calc(char* content){
-    char elem = '\0';
-    int index_num=0;
-    int error =0;
     DblLinkedList* list =  createDblLinkedList();
-    Node* tmp= malloc(sizeof(DblLinkedList));
-    
-// Пока в исходной строке есть необработанные лексемы, считываем очередную:
- for(int i=0; i<256 && content[i] != '\0'; i++){}
-    pushBack(list, 'N');
-    printf("[%c]\n", tmp->value);
-    free(tmp);
+    convert(content, list);
+
     return 0;
 }
-
-// int mass(char sign){
-//     int res =1;
-//     if(sign == '*' || sign == '/') res =2;
-//     return res;
-// }
-
 
 DblLinkedList* createDblLinkedList() {
     DblLinkedList *tmp = (DblLinkedList*) malloc(sizeof(DblLinkedList));
@@ -31,73 +16,17 @@ DblLinkedList* createDblLinkedList() {
     return tmp;
 }
 
-// void deleteDblLinkedList(DblLinkedList **list) {
-//     Node *tmp = (*list)->head;
-//     Node *next = NULL;
-//     while (tmp) {
-//         next = tmp->next;
-//         free(tmp);
-//         tmp = next;
-//     }
-//     free(*list);
-//     (*list) = NULL;
-// }
-
-// void pushFront(DblLinkedList *list, void *data) {
-//     Node *tmp = (Node*) malloc(sizeof(Node));
-//     if (tmp == NULL) {
-//         exit(1);
-//     }
-//     tmp->value = data;
-//     tmp->next = list->head;
-//     tmp->prev = NULL;
-//     if (list->head) {
-//         list->head->prev = tmp;
-//     }
-//     list->head = tmp;
- 
-//     if (list->tail == NULL) {
-//         list->tail = tmp;
-//     }
-//     list->size++;
-// }
-
-// void* popFront(DblLinkedList *list) {
-//     Node *prev;
-//     void *tmp;
- 
-//     prev = list->head;
-//     list->head = list->head->next;
-//     if (list->head) {
-//         list->head->prev = NULL;
-//     }
-//     if (prev == list->tail) {
-//         list->tail = NULL;
-//     }
-//     tmp = prev->value;
-//     free(prev);
- 
-//     list->size--;
-//     return tmp;
-// }
-
-void pushBack(DblLinkedList *list, char value) {
+Node* pushBack(DblLinkedList *list, char value) {
     Node *tmp = (Node*) malloc(sizeof(Node));
     tmp->value = value;
+    tmp->mass = mass(value);
     tmp->next = NULL;
     tmp->prev = list->tail;
-    if (list->tail) {
-        list->tail->next = tmp;
-    }
-    list->tail = tmp;
- 
-    if (list->head == NULL) {
-        list->head = tmp;
-    }
     list->size++;
+    return tmp;
 }   
 
-char popBack(DblLinkedList *list) {
+Node* popBack(DblLinkedList *list) {
     Node *next;
     char tmp;
  
@@ -112,11 +41,65 @@ char popBack(DblLinkedList *list) {
     tmp = next->value;
     free(next);
     list->size--;
-    return tmp;
+    return next;
 }
 
-char convert(char* content, int* i){
-char res = content[(*i)];
-if(content[(*i)] == 'o' || content[(*i)++] == 'o' && content[(*i)++] == 's') res = 'c';
-return res;
+int mass(char sign) {
+  int res = 0;
+  switch (sign) {
+    case '(':
+      res = 1;
+      break;
+    case '-':
+    case '+':
+      res = 2;
+      break;
+    case '*':
+    case '/':
+      res = 3;
+      break;
+    default:
+      res = 4;
+      break;
+  }
+  return res;
+}
+
+int operation(char content){
+    return content == '*' || content == '/' ||content == '+'||content == '-' ? 1:0;
+}
+int convert(char* content, DblLinkedList* list){
+    int j=0;
+    Node* tmp;
+        tmp = malloc(sizeof(DblLinkedList));
+    for(int i=0; i< strlen(content); i++) {
+        // Число - добавляем в строку вывода.
+        if(content[i] <= '9' && content[i] >= '0') content[j++] = content[i];
+        // Функция или открывающая скобка - помещаем в стек.
+        if(content[i] == '(') pushBack(list, content[i]);
+        // Оператор (O1):
+        
+        if(operation(content[i])){
+            while (tmp->mass > mass(content[i])){
+                content[j++] = tmp->value;
+                popBack(list);
+            }
+            
+           pushBack(list, content[i]);
+           list->tail = tmp;
+        }
+    }
+
+// tmp = tmp->next;
+
+tmp = list->tail;
+printf("[%c]\n", tmp->value);
+
+while(list->size){
+    // content[j++] = tmp->value;
+    // popBack(list);
+    list->size--;
+}
+content[j] = '\0';
+return 0;
 }
