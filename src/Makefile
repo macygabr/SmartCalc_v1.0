@@ -37,12 +37,12 @@ gcov_report: clean check
 	$(OPEN)
 
 clang:
-	clang-format -style="{BasedOnStyle: Google}" -n */*.c *.h
+	clang-format -style="{BasedOnStyle: Google}" -i *.c *.h
 
 check:
 	checkmk clean_mode=1 tests/headers.check tests/*.check > tests/calc_test.c
 
-test: calc.a check
+test: calc.a check clang
 	$(CC) $(WWW) -std=c11  tests/calc_test.c calc.a -o test $(TEST_FLAGS)
 
 valgrind: clean check calc.a test

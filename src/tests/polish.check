@@ -1,0 +1,59 @@
+#test t1
+  char str[256] = {"1+5.5*2+3"};
+  char origin[256] = {"1 5.5 2 * + 3 +"};
+  calc(str);
+  ck_assert_str_eq(str, origin);
+
+#test t2
+  char str[256] = {"4*5+3-4/2*6"};
+  char origin[256] = {"4 5 * 3 + 4 2 / 6 * -"};
+  calc(str);
+  ck_assert_str_eq(str, origin);
+
+#test t3
+  char str[256] = {"2+(2+3/4-(4-3)-2)-1"};
+  char origin[256] = {"2 2 3 4 / + 4 3 - - 2 - + 1 -"};
+  calc(str);
+  ck_assert_str_eq(str, origin);
+
+#test t4
+  char str[256] = {"12+3mod2"};
+  char origin[256] = {"12 3 2 m +"};
+  calc(str);
+  ck_assert_str_eq(str, origin);
+
+#test t5
+  char str[256] = {"2^4+3*(6-5*4)+(1-2)"};
+  char origin[256] = {"2 4 ^ 3 6 5 4 * - * + 1 2 - +"};
+  calc(str);
+  ck_assert_str_eq(str, origin);
+
+#test t6
+  char str[256] = {"2+-2"};
+  char origin[256] = {"2 + 2 -"};
+  calc(str);
+  ck_assert_str_eq(str, origin);
+
+#test t7
+  char str[256] = {"sin(4*3)+2-cos(4-2)"};
+  char origin[256] = {"4 3 * s 2 + 4 2 - c -"};
+  calc(str);
+  ck_assert_str_eq(str, origin);
+
+#test t8
+  char str[256] = {"sin(4*3)+2-cos(4-2)^tan(3)+ln(10)-sqrt(tan(19))"};
+  char origin[256] = {"4 3 * s 2 + 4 2 - 3 t ^ c - 10 l + 19 t q -"};
+  calc(str);
+  ck_assert_str_eq(str, origin);
+
+#test t9
+  char str[256] = {"sqrt(tan(19))-cos(5+5^2)/ln(sin(3))"};
+  char origin[256] = {"19 t q 5 5 2 ^ + c 3 s l / -"};
+  calc(str);
+  ck_assert_str_eq(str, origin);
+
+#test t10
+  char str[256] = {"12.345+654.3*4^3.4"};
+  char origin[256] = {"12.345 654.3 4 3.4 ^ * +"};
+  calc(str);
+  ck_assert_str_eq(str, origin);
