@@ -5,7 +5,9 @@
 
 double calc(char* content) {
   double res = 0.0;
+  int signNumber = 0;
   char input[256];
+
   convert(content, input);
   for (int i = 0; i < (int)strlen(content); i++) content[i] = input[i];
   polish(content);
@@ -23,8 +25,10 @@ int polish(char* content) {
       res[j++] = content[i];
       if (add_space(content[i + 1])) res[j++] = ' ';
     }
+    
     if (content[i] == '(' || operation(content[i]))
       add_steck(steck, content[i], &last);
+
     if (operator(content[i])) {
       while (mass(steck[last - 1]) >= mass(content[i])) {
         last--;
@@ -57,10 +61,18 @@ int polish(char* content) {
 }
 
 double arithmetic(char* content) {
-  for(int i=0; content[i] != ' ' ;i++){
-    
-  }
   double res = 0.0;
+  double arr[255] = {0};
+  int last =1;
+  for (int i = 0; content[i] != '\0'; i++) {
+    if(content[i]!= ' '){
+        if(content[i] >= '9' && content[i] <= '0') arr[last++] = makeNum(content, &i);
+        if(operation(content[i]) || operator(content[i])){
+            arr[last-2] = select(arr[last-2],arr[last-1],content[i]);
+            last--;
+        }
+    }
+  }
   return res;
 }
 // _______________________________________support_______________________________________
