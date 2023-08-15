@@ -17,10 +17,28 @@ else
 	OPEN=open ./report/index.html
 endif
 
-all: clean calc.a
+all: build
+
+build: clean
+	-mkdir Build 
+	cd Build; qmake ../SmartCalc/SmartCalc.pro
+	make -C Build > /dev/null 
+
+install: build
+	-mkdir Calculator
+	mv Build/SmartCalc.app Calculator
+
+uninstall:
+	rm -rf Calculator
+
+dist:
+	tar -czf SmartCalc.install.tar.gz ./*
+
+dvi:
+	open smartcalc.html
 
 clean:
-	rm -rf *.o *.a *.out *.gcda *.info *.gcno tests/*.out greport calc.h.gch .clang-format report gcov */*.o test tests/calc_test.c
+	rm -rf *.a report gcov tests/calc_test.c test *.gcno
 
 calc.a:
 	$(CC) $(CFLAGS) -c *.c 
@@ -35,6 +53,7 @@ gcov_report: clean check
 	lcov -t "calc" -o calc.info -c -d .
 	genhtml -o ./report calc.info
 	$(OPEN)
+	rm *.gcda *.gcno *.o *.info
 
 clang:
 	clang-format -style="{BasedOnStyle: Google}" -n *.c *.h
@@ -44,6 +63,7 @@ check:
 
 test: calc.a check clang
 	$(CC) $(WWW) -std=c11  tests/calc_test.c calc.a -o test $(TEST_FLAGS)
+	./test
 
 valgrind: clean check calc.a test
 	CK_FORK=no valgrind --tool=memcheck --leak-check=yes ./test
