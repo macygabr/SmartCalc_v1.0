@@ -1,7 +1,5 @@
 #include "calc.h"
-
 #include <math.h>
-#include <stdlib.h>
 #include <string.h>
 
 double calc(char* content) {
@@ -84,7 +82,6 @@ double arithmetic(char* content) {
         }
       }
     }
-    // printf("%f %f %f %f %f\n", arr[0], arr[1], arr[2], arr[3], arr[4]);
   }
   return arr[0];
 }
