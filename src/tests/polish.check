@@ -30,7 +30,7 @@
 
 #test convert_6
   char str[256] = {"(-2)+(-2)"};
-  char origin[256] = {"2 - 2 - +"};
+  char origin[256] = {"0 2 - 0 2 - +"};
   calc(str);
   ck_assert_str_eq(str, origin);
 

@@ -37,7 +37,7 @@ gcov_report: clean check
 	$(OPEN)
 
 clang:
-	clang-format -style="{BasedOnStyle: Google}" -i *.c *.h
+	clang-format -style="{BasedOnStyle: Google}" -n *.c *.h
 
 check:
 	checkmk clean_mode=1 tests/headers.check tests/*.check > tests/calc_test.c

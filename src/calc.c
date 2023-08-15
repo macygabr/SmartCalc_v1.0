@@ -1,36 +1,42 @@
 #include "calc.h"
 
+#include <math.h>
 #include <stdlib.h>
 #include <string.h>
 
 double calc(char* content) {
   double res = 0.0;
-  int signNumber = 0;
   char input[256];
+  char string[256];
+  int i = 0;
 
-  convert(content, input);
-  for (int i = 0; i < (int)strlen(content); i++) content[i] = input[i];
+  zeroAdd(content, string);
+  convert(string, input);
+  for (i = 0; input[i] != '\0'; i++) content[i] = input[i];
+  content[i] = '\0';
   polish(content);
   res = arithmetic(content);
   return res;
 }
+
 int polish(char* content) {
   char steck[256];
   char res[256];
   int j = 0;
   int last = 0;
+  steck[0] = 'N';
 
   for (int i = 0; content[i] != '\0'; i++) {
     if ((content[i] <= '9' && content[i] >= '0') || content[i] == '.') {
       res[j++] = content[i];
       if (add_space(content[i + 1])) res[j++] = ' ';
     }
-    
+
     if (content[i] == '(' || operation(content[i]))
       add_steck(steck, content[i], &last);
 
     if (operator(content[i])) {
-      while (mass(steck[last - 1]) >= mass(content[i])) {
+      while (last > 0 && mass(steck[last - 1]) >= mass(content[i])) {
         last--;
         res[j++] = steck[last];
         res[j++] = ' ';
@@ -61,19 +67,26 @@ int polish(char* content) {
 }
 
 double arithmetic(char* content) {
-  double res = 0.0;
   double arr[255] = {0};
-  int last =1;
+  int last = 0;
   for (int i = 0; content[i] != '\0'; i++) {
-    if(content[i]!= ' '){
-        if(content[i] >= '9' && content[i] <= '0') arr[last++] = makeNum(content, &i);
-        if(operation(content[i]) || operator(content[i])){
-            arr[last-2] = select(arr[last-2],arr[last-1],content[i]);
-            last--;
+    if (content[i] != ' ' && content[i] != '.') {
+      if (content[i] <= '9' && content[i] >= '0')
+        arr[last++] = makeNum(content, &i);
+
+      else {
+        if (operation(content[i])) {
+          arr[last - 1] = sel(arr[last - 1], arr[last - 1], content[i]);
         }
+        if (operator(content[i])) {
+          arr[last - 2] = sel(arr[last - 2], arr[last - 1], content[i]);
+          last--;
+        }
+      }
     }
+    // printf("%f %f %f %f %f\n", arr[0], arr[1], arr[2], arr[3], arr[4]);
   }
-  return res;
+  return arr[0];
 }
 // _______________________________________support_______________________________________
 int convert(char* content, char* str) {
@@ -174,9 +187,9 @@ int operation(char content) {
              : 0;
 }
 int add_steck(char* steck, char content, int* last) {
-  steck[(*last)++] = content;
+  steck[(*last)] = content;
+  (*last)++;
   steck[(*last)] = '\0';
-  // printf("steck = [%s]\n", steck);
   return 0;
 }
 
@@ -185,4 +198,98 @@ int add_space(char content) {
     return 0;
   else
     return 1;
+}
+
+double makeNum(char* content, int* i) {
+  double res = 0.0;
+  int j = 0;
+  int flag = 0;
+
+  for (; content[(*i)] != ' '; (*i)++) {
+    if (content[(*i)] == '.') {
+      flag = j;
+      (*i)++;
+    }
+    res += (double)(content[(*i)] - '0') / ((int)pow(10, j++));
+  }
+
+  res *= pow(10, (j - flag - 1));
+  return res;
+}
+
+double sel(double x, double y, char operation) {
+  double res = 0;
+  switch (operation) {
+    case '+':
+      res = x + y;
+      break;
+    case '-':
+      res = x - y;
+      break;
+    case '/':
+      res = x / y;
+      break;
+    case '*':
+      res = x * y;
+      break;
+    case '^':
+      res = pow(x, y);
+      break;
+    case 'm':
+      res = fmod(x, y);
+      break;
+    case 'c':
+      res = cos(y);
+      break;
+    case 's':
+      res = sin(y);
+      break;
+    case 't':
+      res = tan(y);
+      break;
+    case 'C':
+      res = acos(y);
+      break;
+    case 'S':
+      res = asin(y);
+      break;
+    case 'T':
+      res = atan(y);
+      break;
+    case 'q':
+      res = sqrt(y);
+      break;
+    case 'l':
+      res = log(y);
+      break;
+    case 'L':
+      res = log10(y);
+      break;
+    default:
+      break;
+  }
+  return res;
+}
+
+int zeroAdd(char* content, char* string) {
+  int j = 0;
+  int lon = strlen(content);
+  for (int i = 0; i < lon; i++) {
+    if (content[i] == '-' || content[i] == '+') {
+      if (i > 0 && (content[i - 1] >= '9' || content[i - 1] <= '0') &&
+          content[i - 1] != ')') {
+        string[j++] = '0';
+        string[j] = content[i];
+        lon++;
+      }
+      if (i == 0) {
+        string[j++] = '0';
+        string[j] = content[i];
+        lon++;
+      }
+    }
+    string[j++] = content[i];
+  }
+  string[j] = '\0';
+  return 0;
 }
