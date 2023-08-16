@@ -1,0 +1,97 @@
+#test withX_1
+  double x = -1;
+  char str[255] = "1+x";
+  double res = calc(str,x);
+  double res_orig = 0;
+  ck_assert_double_eq_tol(res_orig, res, 1e-07);
+
+
+#test withX_2
+  double x = -1;
+  char str[255] = "(asin(1)-(sin(x)))";
+  float res = calc(str,x);
+  float res_orig = 2.41226731;
+  ck_assert_double_eq_tol(res_orig, res, 1e-07);
+
+#test withX_3
+  double x = 0;  
+  char str[255] = "(acos(x)-(sin(1)))";
+  float res = calc(str,x);
+  float res_orig = 0.72932534;
+  ck_assert_double_eq_tol(res_orig, res, 1e-07);
+
+#test withX_4
+  double x = 1;
+  char str[255] = "asin(x)-atan(x)+acos(x)";
+  float res = calc(str,x);
+  float res_orig = 0.78539816;
+  ck_assert_double_eq_tol(res_orig, res, 1e-07);
+
+#test withX_5
+  double x = 3;
+  char str[255] = "sin(0.5)+16-x^8";
+  float res = calc(str,x);
+  float res_orig = -6544.52057446;
+  ck_assert_double_eq_tol(res_orig, res, 1e-07);
+
+#test withX_6
+  double x = -8;
+  char str[255] = "-(x*9.0)";
+  float res = calc(str,x);
+  float res_orig = 72.00000000;
+  ck_assert_double_eq_tol(res_orig, res, 1e-07);
+
+#test withX_7
+  double x = -2;
+  char str[255] = "(-2+0.5)*(x)";
+  float res = calc(str,x);
+  float res_orig = 3;
+  ck_assert_double_eq_tol(res_orig, res, 1e-07);
+
+#test withX_8
+  double x = 2;
+  char str[255] = "(x*1)-(sin(1))";
+  float res = calc(str,x);
+  float res_orig = 1.15852902;
+  ck_assert_double_eq_tol(res_orig, res, 1e-07);
+
+#test withX_19
+  double x = 25;
+  char str[255] = "sqrt(x)";
+  float res = calc(str,x);
+  float res_orig = 5;
+  ck_assert_double_eq_tol(res_orig, res, 1e-07);
+
+#test withX_10
+  double x = 2;
+  char str[255] = "53modx";
+  float res = calc(str,x);
+  float res_orig = 1.00000000;
+  ck_assert_double_eq_tol(res_orig, res, 1e-07);
+
+#test withX_11
+  double x = 53;
+  char str[255] = "cos(0.5)+log(x)";
+  double res = calc(str,x);
+  double res_orig = 2.60185843;
+  ck_assert_double_eq_tol(res_orig, res, 1e-07);
+
+#test withX_12
+  double x = -1;
+  char str[255] = "x";
+  double res = calc(str,x);
+  double res_orig = -1;
+  ck_assert_double_eq_tol(res_orig, res, 1e-07);
+
+  #test withX_13
+  double x = -1;
+  char str[255] = "(5+1)x";
+  double res = calc(str,x);
+  ck_assert_float_nan(res);
+
+  #test withX_14
+  double x = 2;
+  char str[255] = "(5+1)*x";
+  double res = calc(str,x);
+  double res_orig = 12;
+  ck_assert_double_eq_tol(res_orig, res, 1e-07);
