@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>648</width>
-    <height>588</height>
+    <width>686</width>
+    <height>594</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,10 +23,10 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>-10</x>
-      <y>0</y>
+      <x>10</x>
+      <y>10</y>
       <width>661</width>
-      <height>591</height>
+      <height>541</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -1186,13 +1186,16 @@ color: rgb(138, 137, 140);
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
+      <property name="maximum">
+       <number>1000000000</number>
+      </property>
      </widget>
      <widget class="QSpinBox" name="spinBox_2">
       <property name="geometry">
        <rect>
         <x>300</x>
         <y>50</y>
-        <width>141</width>
+        <width>131</width>
         <height>51</height>
        </rect>
       </property>
@@ -1212,7 +1215,7 @@ color: rgb(138, 137, 140);
        <rect>
         <x>480</x>
         <y>50</y>
-        <width>141</width>
+        <width>131</width>
         <height>51</height>
        </rect>
       </property>
@@ -1225,6 +1228,9 @@ color: rgb(138, 137, 140);
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+      <property name="maximum">
+       <number>100</number>
       </property>
      </widget>
      <widget class="QLineEdit" name="lineEdit_3">
@@ -1248,7 +1254,7 @@ font-size: 33px;
 font: 16pt &quot;Comic Sans MS&quot;;</string>
       </property>
       <property name="text">
-       <string>Сумма</string>
+       <string>Сумма(руб.)</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -1259,7 +1265,7 @@ font: 16pt &quot;Comic Sans MS&quot;;</string>
        <rect>
         <x>300</x>
         <y>20</y>
-        <width>121</width>
+        <width>111</width>
         <height>31</height>
        </rect>
       </property>
@@ -1275,7 +1281,7 @@ font-size: 33px;
 font: 16pt &quot;Comic Sans MS&quot;;</string>
       </property>
       <property name="text">
-       <string>Срок</string>
+       <string>Срок (Мес)</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -1302,21 +1308,58 @@ font-size: 33px;
 font: 16pt &quot;Comic Sans MS&quot;;</string>
       </property>
       <property name="text">
-       <string>Процент</string>
+       <string>Процент(%)</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit">
+     <widget class="QTabWidget" name="tabWidget_2">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>140</y>
-        <width>541</width>
-        <height>321</height>
+        <x>-10</x>
+        <y>110</y>
+        <width>671</width>
+        <height>411</height>
        </rect>
       </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab_5">
+       <attribute name="title">
+        <string>Tab 1</string>
+       </attribute>
+       <widget class="QTextEdit" name="textEdit">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>0</y>
+          <width>651</width>
+          <height>371</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+
+background-color: rgb(37, 37, 37);
+
+color: rgb(138, 137, 140);
+
+font-size: 33px;
+
+font: 16pt &quot;Comic Sans MS&quot;;</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_6">
+       <attribute name="title">
+        <string>Tab 2</string>
+       </attribute>
+      </widget>
      </widget>
     </widget>
    </widget>
@@ -1326,7 +1369,7 @@ font: 16pt &quot;Comic Sans MS&quot;;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>648</width>
+     <width>686</width>
      <height>24</height>
     </rect>
    </property>

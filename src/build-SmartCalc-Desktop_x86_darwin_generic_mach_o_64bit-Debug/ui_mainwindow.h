@@ -70,7 +70,10 @@ public:
     QLineEdit *lineEdit_3;
     QLineEdit *lineEdit_4;
     QLineEdit *lineEdit_5;
+    QTabWidget *tabWidget_2;
+    QWidget *tab_5;
     QTextEdit *textEdit;
+    QWidget *tab_6;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -78,7 +81,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(648, 588);
+        MainWindow->resize(686, 594);
         MainWindow->setStyleSheet(QString::fromUtf8("background-color: rgb(37,37,37);\n"
 "\n"
 "\n"
@@ -87,7 +90,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-        tabWidget->setGeometry(QRect(-10, 0, 661, 591));
+        tabWidget->setGeometry(QRect(10, 10, 661, 541));
         tabWidget->setStyleSheet(QString::fromUtf8("color:rgb(0, 0, 0);\n"
 "\n"
 "\n"
@@ -817,9 +820,10 @@ public:
 "\n"
 ""));
         spinBox->setAlignment(Qt::AlignCenter);
+        spinBox->setMaximum(1000000000);
         spinBox_2 = new QSpinBox(tab_4);
         spinBox_2->setObjectName(QString::fromUtf8("spinBox_2"));
-        spinBox_2->setGeometry(QRect(300, 50, 141, 51));
+        spinBox_2->setGeometry(QRect(300, 50, 131, 51));
         spinBox_2->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 0);\n"
 "color: rgb(138, 137, 140);\n"
 "\n"
@@ -828,13 +832,14 @@ public:
         spinBox_2->setAlignment(Qt::AlignCenter);
         spinBox_3 = new QSpinBox(tab_4);
         spinBox_3->setObjectName(QString::fromUtf8("spinBox_3"));
-        spinBox_3->setGeometry(QRect(480, 50, 141, 51));
+        spinBox_3->setGeometry(QRect(480, 50, 131, 51));
         spinBox_3->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 0);\n"
 "color: rgb(138, 137, 140);\n"
 "\n"
 "\n"
 ""));
         spinBox_3->setAlignment(Qt::AlignCenter);
+        spinBox_3->setMaximum(100);
         lineEdit_3 = new QLineEdit(tab_4);
         lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
         lineEdit_3->setGeometry(QRect(20, 20, 211, 31));
@@ -850,7 +855,7 @@ public:
         lineEdit_3->setAlignment(Qt::AlignCenter);
         lineEdit_4 = new QLineEdit(tab_4);
         lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
-        lineEdit_4->setGeometry(QRect(300, 20, 121, 31));
+        lineEdit_4->setGeometry(QRect(300, 20, 111, 31));
         lineEdit_4->setStyleSheet(QString::fromUtf8("border-radius: 10px;\n"
 "\n"
 "background-color: rgb(37, 37, 37);\n"
@@ -874,14 +879,33 @@ public:
 "\n"
 "font: 16pt \"Comic Sans MS\";"));
         lineEdit_5->setAlignment(Qt::AlignCenter);
-        textEdit = new QTextEdit(tab_4);
+        tabWidget_2 = new QTabWidget(tab_4);
+        tabWidget_2->setObjectName(QString::fromUtf8("tabWidget_2"));
+        tabWidget_2->setGeometry(QRect(-10, 110, 671, 411));
+        tab_5 = new QWidget();
+        tab_5->setObjectName(QString::fromUtf8("tab_5"));
+        textEdit = new QTextEdit(tab_5);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(50, 140, 541, 321));
+        textEdit->setGeometry(QRect(10, 0, 651, 371));
+        textEdit->setStyleSheet(QString::fromUtf8("border-radius: 10px;\n"
+"\n"
+"background-color: rgb(37, 37, 37);\n"
+"\n"
+"color: rgb(138, 137, 140);\n"
+"\n"
+"font-size: 33px;\n"
+"\n"
+"font: 16pt \"Comic Sans MS\";"));
+        textEdit->setReadOnly(true);
+        tabWidget_2->addTab(tab_5, QString());
+        tab_6 = new QWidget();
+        tab_6->setObjectName(QString::fromUtf8("tab_6"));
+        tabWidget_2->addTab(tab_6, QString());
         tabWidget->addTab(tab_4, QString());
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 648, 24));
+        menubar->setGeometry(QRect(0, 0, 686, 24));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -890,6 +914,7 @@ public:
         retranslateUi(MainWindow);
 
         tabWidget->setCurrentIndex(1);
+        tabWidget_2->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -932,9 +957,11 @@ public:
         pushButton_27->setText(QCoreApplication::translate("MainWindow", "acos", nullptr));
         pushButton_22->setText(QCoreApplication::translate("MainWindow", "log", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("MainWindow", "Tab 1", nullptr));
-        lineEdit_3->setText(QCoreApplication::translate("MainWindow", "\320\241\321\203\320\274\320\274\320\260", nullptr));
-        lineEdit_4->setText(QCoreApplication::translate("MainWindow", "\320\241\321\200\320\276\320\272", nullptr));
-        lineEdit_5->setText(QCoreApplication::translate("MainWindow", "\320\237\321\200\320\276\321\206\320\265\320\275\321\202", nullptr));
+        lineEdit_3->setText(QCoreApplication::translate("MainWindow", "\320\241\321\203\320\274\320\274\320\260(\321\200\321\203\320\261.)", nullptr));
+        lineEdit_4->setText(QCoreApplication::translate("MainWindow", "\320\241\321\200\320\276\320\272 (\320\234\320\265\321\201)", nullptr));
+        lineEdit_5->setText(QCoreApplication::translate("MainWindow", "\320\237\321\200\320\276\321\206\320\265\320\275\321\202(%)", nullptr));
+        tabWidget_2->setTabText(tabWidget_2->indexOf(tab_5), QCoreApplication::translate("MainWindow", "Tab 1", nullptr));
+        tabWidget_2->setTabText(tabWidget_2->indexOf(tab_6), QCoreApplication::translate("MainWindow", "Tab 2", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_4), QCoreApplication::translate("MainWindow", "Tab 2", nullptr));
     } // retranslateUi
 

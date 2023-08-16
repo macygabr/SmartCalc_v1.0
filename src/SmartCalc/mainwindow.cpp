@@ -1,13 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include <qmath.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-//    ui->scrollArea->setWidget(ui->label);
+
 }
 
 MainWindow::~MainWindow()
@@ -223,4 +223,54 @@ void MainWindow::on_pushButton_19_clicked()
 
 //    ui->label->setText(ui->label->text() + "dbggbgbgb\n\n\tgtgrsrgtrgtn");
 //}
+
+
+
+
+
+void MainWindow::on_spinBox_2_textChanged(const QString &arg1)
+{
+    QString text;
+    double rub = (ui->spinBox->value());
+    double proc = ((ui->spinBox_3->value())/12.0)/100.0;
+    double mounth = ui->spinBox_2->value();
+    double res = rub*(proc+(proc/(qPow((1+proc),mounth) - 1)));
+    text = "Процент: " + QString::number(proc, 'f', 7) +"\n";
+    for(int i=1; i<=ui->spinBox_2->value() ; i++){
+        text += "Выплата в " + QString::number(i) + " месяц составит: " + QString::number(res, 'f', 2) + " \n";
+    }
+
+    ui->textEdit->setText(text);
+}
+
+
+void MainWindow::on_spinBox_textChanged(const QString &arg1)
+{
+    QString text;
+    double rub = (ui->spinBox->value());
+    double proc = ((ui->spinBox_3->value())/12.0)/100.0;
+    double mounth = ui->spinBox_2->value();
+    double res = rub*(proc+(proc/(qPow((1+proc),mounth) - 1)));
+    text = "Процент: " + QString::number(proc, 'f', 7) +"\n";
+    for(int i=1; i<=ui->spinBox_2->value() ; i++){
+        text += "Выплата в " + QString::number(i) + " месяц составит: " + QString::number(res, 'f', 2) + " \n";
+    }
+
+    ui->textEdit->setText(text);
+}
+
+
+void MainWindow::on_spinBox_3_textChanged(const QString &arg1)
+{
+    QString text;
+    double rub = (ui->spinBox->value());
+    double proc = ((ui->spinBox_3->value())/12.0)/100.0;
+    double mounth = ui->spinBox_2->value();
+    double res = rub*(proc+(proc/(qPow((1+proc),mounth) - 1)));
+    text = "Процент: " + QString::number(proc, 'f', 7) +"\n";
+    for(int i=1; i<=ui->spinBox_2->value() ; i++){
+        text += "Выплата в " + QString::number(i) + " месяц составит: " + QString::number(res, 'f', 2) + " \n";
+    }
+    ui->textEdit->setText(text);
+}
 

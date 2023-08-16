@@ -89,11 +89,12 @@ private slots:
     void on_pushButton_19_clicked();
 
 
-//    void on_scrollArea_customContextMenuRequested(const QPoint &pos);
 
-//    void on_label_linkActivated(const QString &link);
+    void on_spinBox_2_textChanged(const QString &arg1);
 
-//    void on_pushButton_33_clicked();
+    void on_spinBox_textChanged(const QString &arg1);
+
+    void on_spinBox_3_textChanged(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;
