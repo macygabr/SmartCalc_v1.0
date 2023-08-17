@@ -96,6 +96,18 @@ private slots:
 
     void on_spinBox_3_textChanged(const QString &arg1);
 
+    void on_lineEdit_textChanged(const QString &arg1);
+
+    void on_lineEdit_6_textChanged(const QString &arg1);
+
+    void on_spinBox_7_textChanged(const QString &arg1);
+
+    void on_spinBox_6_textChanged(const QString &arg1);
+
+    void on_spinBox_5_textChanged(const QString &arg1);
+
+    void on_spinBox_4_textChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
 };

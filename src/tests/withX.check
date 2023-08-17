@@ -55,7 +55,7 @@
   float res_orig = 1.15852902;
   ck_assert_double_eq_tol(res_orig, res, 1e-07);
 
-#test withX_19
+#test withX_9
   double x = 25;
   char str[255] = "sqrt(x)";
   float res = calc(str,x);
@@ -78,9 +78,9 @@
 
 #test withX_12
   double x = -1;
-  char str[255] = "x";
+  char str[255] = "1+x";
   double res = calc(str,x);
-  double res_orig = -1;
+  double res_orig = 0;
   ck_assert_double_eq_tol(res_orig, res, 1e-07);
 
   #test withX_13
@@ -94,4 +94,11 @@
   char str[255] = "(5+1)*x";
   double res = calc(str,x);
   double res_orig = 12;
+  ck_assert_double_eq_tol(res_orig, res, 1e-07);
+
+  #test withX_15
+  double x = 2;
+  char str[255] = "x^2";
+  double res = calc(str,x);
+  double res_orig = 4;
   ck_assert_double_eq_tol(res_orig, res, 1e-07);

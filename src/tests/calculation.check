@@ -1,9 +1,8 @@
 #test arifmetic1
-  char str[255] = "1+1";
+  char str[255] = "cos(0)";
   double res = calc(str,0);
-  double res_orig = 2;
+  double res_orig = 1;
   ck_assert_double_eq_tol(res_orig, res, 1e-07);
-
 
 #test arifmetic2
   char str[255] = "(asin(1)-(sin(-1)))";
@@ -12,7 +11,6 @@
   ck_assert_double_eq_tol(res_orig, res, 1e-07);
 
 #test arifmetic3
-
   char str[255] = "(acos(0)-(sin(1)))";
   float res = calc(str,0);
   float res_orig = 0.72932534;
@@ -33,7 +31,7 @@
 #test arifmetic6
   char str[255] = "-(-8*9.0)";
   float res = calc(str,0);
-  float res_orig = 72.00000000;
+  float res_orig = 72;
   ck_assert_double_eq_tol(res_orig, res, 1e-07);
 
 #test arifmetic7
@@ -106,3 +104,25 @@
   char str[255] = "mod3";
   double res = calc(str,0);
   ck_assert_float_nan(res);
+
+#test arifmetic20
+  char str[255] = "cos(5x)";
+  double res = calc(str,0);
+  ck_assert_float_nan(res);
+
+#test arifmetic21
+  char str[255] = "cos(x5)";
+  double res = calc(str,0);
+  ck_assert_float_nan(res);
+
+#test arifmetic22
+  char str[255] = "5+2^3^2*2";
+  float res = calc(str,0);
+  float res_orig = 1029;
+  ck_assert_double_eq_tol(res_orig, res, 1e-07);
+
+#test arifmetic23
+  char str[255] = "((((((5))))))";
+  float res = calc(str,0);
+  float res_orig = 5;
+  ck_assert_double_eq_tol(res_orig, res, 1e-07);

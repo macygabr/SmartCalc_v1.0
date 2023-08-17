@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>686</width>
-    <height>594</height>
+    <width>658</width>
+    <height>603</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,24 +23,36 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>0</x>
       <y>10</y>
       <width>661</width>
-      <height>541</height>
+      <height>591</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">color:rgb(0, 0, 0);
-
-
+tabwidget.setStyleSheet(&quot;QTabWidget::pane { border: 0; }&quot;);
+tabwidget.setDocumentMode(True)
 </string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
+    </property>
+    <property name="documentMode">
+     <bool>false</bool>
+    </property>
+    <property name="tabsClosable">
+     <bool>false</bool>
+    </property>
+    <property name="movable">
+     <bool>false</bool>
+    </property>
+    <property name="tabBarAutoHide">
+     <bool>false</bool>
     </property>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
-      <string>Tab 1</string>
+      <string> Калькулятор</string>
      </attribute>
      <widget class="QPushButton" name="pushButton_15">
       <property name="geometry">
@@ -1165,7 +1177,7 @@ QPushButton:hover {
     </widget>
     <widget class="QWidget" name="tab_4">
      <attribute name="title">
-      <string>Tab 2</string>
+      <string>Кредитный к-р</string>
      </attribute>
      <widget class="QSpinBox" name="spinBox">
       <property name="geometry">
@@ -1259,6 +1271,9 @@ font: 16pt &quot;Comic Sans MS&quot;;</string>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QLineEdit" name="lineEdit_4">
       <property name="geometry">
@@ -1285,6 +1300,9 @@ font: 16pt &quot;Comic Sans MS&quot;;</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="lineEdit_5">
@@ -1313,6 +1331,9 @@ font: 16pt &quot;Comic Sans MS&quot;;</string>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QTabWidget" name="tabWidget_2">
       <property name="geometry">
@@ -1324,11 +1345,11 @@ font: 16pt &quot;Comic Sans MS&quot;;</string>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_5">
        <attribute name="title">
-        <string>Tab 1</string>
+        <string>Аннуитетный</string>
        </attribute>
        <widget class="QTextEdit" name="textEdit">
         <property name="geometry">
@@ -1357,9 +1378,304 @@ font: 16pt &quot;Comic Sans MS&quot;;</string>
       </widget>
       <widget class="QWidget" name="tab_6">
        <attribute name="title">
-        <string>Tab 2</string>
+        <string>Дифференцированный</string>
        </attribute>
+       <widget class="QTextEdit" name="textEdit_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>0</y>
+          <width>651</width>
+          <height>371</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+
+background-color: rgb(37, 37, 37);
+
+color: rgb(138, 137, 140);
+
+font-size: 33px;
+
+font: 16pt &quot;Comic Sans MS&quot;;</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Графики ф-й</string>
+     </attribute>
+     <widget class="QSpinBox" name="spinBox_4">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>100</y>
+        <width>91</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+
+background-color: rgb(37, 37, 37);
+
+color: rgb(138, 137, 140);
+
+font-size: 33px;
+
+font: 16pt &quot;Comic Sans MS&quot;;
+
+</string>
+      </property>
+      <property name="minimum">
+       <number>-1000000</number>
+      </property>
+      <property name="maximum">
+       <number>1000000</number>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_5">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>100</y>
+        <width>91</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+
+background-color: rgb(37, 37, 37);
+
+color: rgb(138, 137, 140);
+
+font-size: 33px;
+
+font: 16pt &quot;Comic Sans MS&quot;;
+
+</string>
+      </property>
+      <property name="minimum">
+       <number>-1000000</number>
+      </property>
+      <property name="maximum">
+       <number>1000000</number>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_6">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>100</y>
+        <width>91</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+
+background-color: rgb(37, 37, 37);
+
+color: rgb(138, 137, 140);
+
+font-size: 33px;
+
+font: 16pt &quot;Comic Sans MS&quot;;
+
+</string>
+      </property>
+      <property name="minimum">
+       <number>-1000000</number>
+      </property>
+      <property name="maximum">
+       <number>1000000</number>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_7">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>100</y>
+        <width>91</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+
+background-color: rgb(37, 37, 37);
+
+color: rgb(138, 137, 140);
+
+font-size: 33px;
+
+font: 16pt &quot;Comic Sans MS&quot;;
+
+</string>
+      </property>
+      <property name="minimum">
+       <number>-1000000</number>
+      </property>
+      <property name="maximum">
+       <number>1000000</number>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_6">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>611</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget {
+
+
+background-color: rgb(20, 20, 20);
+
+color: rgb(255, 255, 255);
+
+font-size: 33px;
+
+font: 16pt &quot;Comic Sans MS&quot;;
+
+}
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QCustomPlot" name="widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>160</y>
+        <width>591</width>
+        <height>361</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>100</y>
+        <width>51</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+
+border-radius: 10px;
+
+background-color: rgb(37, 37, 37);
+
+color: rgb(138, 137, 140);
+
+font-size: 33px;
+
+font: 16pt &quot;Comic Sans MS&quot;;
+
+</string>
+      </property>
+      <property name="text">
+       <string>Xmin=</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>100</y>
+        <width>51</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+
+border-radius: 10px;
+
+background-color: rgb(37, 37, 37);
+
+color: rgb(138, 137, 140);
+
+font-size: 33px;
+
+font: 16pt &quot;Comic Sans MS&quot;;
+
+</string>
+      </property>
+      <property name="text">
+       <string>Ymin=</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>100</y>
+        <width>51</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+
+border-radius: 10px;
+
+background-color: rgb(37, 37, 37);
+
+color: rgb(138, 137, 140);
+
+font-size: 33px;
+
+font: 16pt &quot;Comic Sans MS&quot;;
+
+</string>
+      </property>
+      <property name="text">
+       <string>Xmax=</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>100</y>
+        <width>51</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+
+border-radius: 10px;
+
+background-color: rgb(37, 37, 37);
+
+color: rgb(138, 137, 140);
+
+font-size: 33px;
+
+font: 16pt &quot;Comic Sans MS&quot;;
+
+</string>
+      </property>
+      <property name="text">
+       <string>Ymax=</string>
+      </property>
      </widget>
     </widget>
    </widget>
@@ -1369,13 +1685,21 @@ font: 16pt &quot;Comic Sans MS&quot;;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>686</width>
+     <width>658</width>
      <height>24</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header>qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
