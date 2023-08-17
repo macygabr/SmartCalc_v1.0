@@ -17,7 +17,7 @@ else
 	OPEN=open ./report/index.html
 endif
 
-all: build
+all: install
 
 # build: clean
 # 	-mkdir Build 
