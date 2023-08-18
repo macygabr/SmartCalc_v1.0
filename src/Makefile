@@ -19,11 +19,6 @@ endif
 
 all: install
 
-# build: clean
-# 	-mkdir Build 
-# 	cd Build; qmake ../SmartCalc/SmartCalc.pro
-# 	make -C Build > /dev/null 
-
 install:
 	mkdir Calculator
 	cd SmartCalc; qmake -o ../Calculator/Makefile
